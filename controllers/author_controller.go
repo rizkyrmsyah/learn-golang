@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func getAuthor(c *gin.Context) {
+func GetAuthor(c *gin.Context) {
 	var author []models.Author
 	err := models.GetAuthor(&author)
 	if err != nil {
@@ -16,4 +16,13 @@ func getAuthor(c *gin.Context) {
 	}
 }
 
-				
+func StoreAuthor(c *gin.Context) {
+	var author models.Author
+	c.BindJSON(&author)
+	err := models.AddAuthor(&author)
+	if err != nil {
+		c.AbortWithStatus(http.StatusNotFound)
+	} else {
+		c.JSON(http.StatusOK, author)
+	}
+}

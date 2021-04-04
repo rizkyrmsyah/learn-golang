@@ -22,7 +22,7 @@ func BuildDBConfig() *DBConfig {
 		Port:     3306,
 		User:     "root",
 		Password: "Root123-",
-		DBName:   "learn_laravel_dev",
+		DBName:   "learn_golang",
 	}
 	return &dbConfig
 }
